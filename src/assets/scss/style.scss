@@ -1,0 +1,123 @@
+@import 'bulma/sass/_index.scss';
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+$yellow: #e0ff00;
+
+.has-text-yellow {
+  color: $yellow !important;
+}
+
+.link-hover {
+  transition: color 0.3s ease;
+}
+
+.link-hover:hover,
+.copy-icon:hover {
+  color: darken($yellow, 20%) !important; /* Darker color on hover */
+}
+
+h1,
+h2,
+.rubik-glitch-regular {
+  font-family: 'Rubik Glitch', system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p,
+.space-mono-bold {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+disclaimer,
+.space-mono-regular {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Variables
+    --font-rubik: 'Rubik', sans-serif;
+    --background: #000;
+
+    $primary: #e0ff00;
+    $primary-invert: findColorInvert($primary);
+    $dark: findDarkColor($primary);
+    $light: #e0ff00;
+    $link: $primary-invert;
+
+    // Adding custom Broge colors
+    // From Maurice
+    // Highlight
+    $light: #5c83ff;
+    // Body
+    $blue: #3156f4;
+    $blue-invert: findColorInvert($blue);
+    // Shadow
+    $shadow-color: #0e2daf;
+    // Outline
+    $border: #172960;
+    // Dark Fill
+    $dark: #000;
+    // V Red
+    $red: #e00052;
+    $red-invert: findColorInvert($red);
+    // V Pink
+    $pink: #ee27fe;
+    $pink-invert: findColorInvert($pink);
+    // V Orange
+    $orange: #ff7800;
+    $orange-invert: findColorInvert($orange);
+    // V Yellow
+    $yellow: #e0ff00;
+    $yellow-invert: findColorInvert($yellow);
+    // Assigning custom colors to their associated variables
+    $custom-colors: (
+      'blue': (
+        $blue,
+        $blue-invert
+      ),
+      'red': (
+        $red,
+        $red-invert
+      ),
+      'pink': (
+        $pink,
+        $pink-invert
+      ),
+      'orange': (
+        $orange,
+        $orange-invert
+      ),
+      'yellow': (
+        $yellow,
+        $yellow-invert
+      )
+    );
+
+    $custom-colors: (
+      'orange': (
+        $orange,
+        $orange-invert
+      )
+    );
+
+    // settings background color
+    $background: $dark;
+  }
+
+  html {
+    max-height: 100vh; /* Maximum height is 100% of the viewport height */
+    overflow-y: auto; /* Allow scrolling if content exceeds the maximum height */
+  }
+
+  body {
+    color: $yellow;
+    font-family: monospace;
+    font-weight: bold;
+  }
+}
