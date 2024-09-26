@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+body {
+  @apply text-foreground bg-background font-spaceMono pt-12;
+}
+
+header {
+  @apply bg-black h-12 fixed top-0 mt-0 left-0 right-0 z-50;
+}
+
+header nav {
+  @apply w-full max-w-screen-xl mt-5 mx-auto;
+}
+
+header nav ul {
+  @apply flex justify-end items-center space-x-6 list-none p-0 m-0 pr-4;
+}
+
+header nav ul li {
+  @apply inline-block;
+}
+
+h1 {
+  @apply font-rubikGlitch text-6xl text-center m-0;
+}
+
+h1,
+h3 {
+  @apply font-rubikGlitch;
+}
+
+hr {
+  @apply border-0 border-t-4 rounded-full border-yellow;
+}
+
+.navbar-link {
+  @apply text-foreground transition-all duration-300 ease-in-out no-underline;
+}
+.navbar-link:hover {
+  @apply underline transition-all ease-in-out;
+}
+.navbar-link.active {
+  @apply underline;
+}
+.navbar-link.visited {
+  @apply text-foreground transition-all duration-300 ease-in-out no-underline;
+}
+
+.main-container {
+  @apply mt-0 w-3/4 mx-auto;
+}
+
+.copy-button {
+  @apply cursor-pointer bg-transparent border-none text-yellow text-xl inline-flex items-center;
+  position: relative;
+}
+
+.copy-button:hover {
+  @apply hover:underline border-yellow border-dashed text-[1.3rem] transition-all ease-in-out;
+}
+
+.copy-button:not(:hover) {
+  @apply text-xl border-none transition-opacity ease-in-out;
+}
+
+.tooltip {
+  @apply fixed bg-black text-yellow text-sm py-1 px-2 rounded pointer-events-none font-spaceMono opacity-0 transition-opacity ease-in-out;
+}
+
+.copy-button:hover .tooltip {
+  @apply opacity-100;
+}
+
+.center-content {
+  @apply flex justify-center items-center text-center;
+}
+
+.vision-content {
+  @apply flex justify-center items-center w-2/3 mx-auto;
+}
+
+.socials-content {
+  @apply flex justify-center items-center w-2/3 mx-auto text-yellow;
+}
+
+.socials-content a {
+  @apply text-yellow text-6xl inline-block transition-all duration-300 ease-in-out;
+}
+.socials-content a:hover {
+  @apply transform scale-110;
+}
+
+.telegram-icon {
+  @apply inline-block transition-all duration-300 ease-in-out;
+}
+.telegram-icon:hover {
+  @apply transform scale-110;
+}/*# sourceMappingURL=main.css.map */
