@@ -34,7 +34,7 @@ const Socials: React.FC = () => {
           />
         </div>
         <div className="socials-content">
-          <div className="text-xl flex justify-center items-center space-x-4">
+          <div className="text-xl flex justify-center items-center space-x-4 py-10 my-5">
             <a href="https://www.tiktok.com/@v_are_money" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faTiktok} className="transition-transform duration-300 ease-in-out hover:scale-110" />
             </a>
