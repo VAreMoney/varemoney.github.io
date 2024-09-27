@@ -14,6 +14,15 @@ const config: Config = {
                 yellow: {
                     DEFAULT: '#e0ff00',
                 },
+                'matcha-green': {
+                    DEFAULT: '#3cbe67',
+                },
+                'uniswap-pink': {
+                    DEFAULT: '#F25A67',
+                },
+                'flooz-blue': {
+                    DEFAULT: '#5e38f4',
+                },
             },
             scale: {
                 '110': '1.1',

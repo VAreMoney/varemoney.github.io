@@ -4,7 +4,7 @@ import React from "react";
 const Footer: React.FC = () => {
   return (
     <section
-      id="footer"
+      id="buy"
       className="min-h-screen flex items-center justify-center bg-black text-yellow-400"
     >
       <footer className="w-full mt-8">

@@ -14,7 +14,7 @@ const Socials: React.FC = () => {
   return (
     <section
       id="socials"
-      className="min-h-screen flex items-center justify-center bg-black text-yellow-400"
+      className="min-h-screen flex items-center justify-center bg-black"
     >
       <div className="max-w-4xl mx-auto p-8">
         <div className="w-full mb-8">
@@ -34,22 +34,27 @@ const Socials: React.FC = () => {
           />
         </div>
         <div className="socials-content">
-          <div className="text-xl flex justify-center items-center space-x-4 py-10 my-5">
-            <a href="https://www.tiktok.com/@v_are_money" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faTiktok} className="transition-transform duration-300 ease-in-out hover:scale-110" />
-            </a>
-            <a href="https://x.com/varemoney" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon
-                icon={twitterIcon}
-                onMouseEnter={() => setTwitterIcon(faTwitter)}
-                onMouseLeave={() => setTwitterIcon(faXTwitter)}
-                className="transition-transform duration-300 ease-in-out hover:scale-110"
-              />
-            </a>
-            <a href="https://t.me/varemoney" target="_blank" rel="noopener noreferrer">
-              <TelegramIcon />
-            </a>
-          </div>
+          <ul>
+            <li>
+              <a href="https://www.tiktok.com/@v_are_money" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faTiktok} />
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/varemoney" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon
+                  icon={twitterIcon}
+                  onMouseEnter={() => setTwitterIcon(faTwitter)}
+                  onMouseLeave={() => setTwitterIcon(faXTwitter)}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="https://t.me/varemoney" target="_blank" rel="noopener noreferrer" className="telegram-icon">
+                <TelegramIcon />
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

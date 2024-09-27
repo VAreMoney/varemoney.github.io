@@ -24,23 +24,45 @@ const Tokenomics: React.FC = () => {
             }}
           />
         </div>
-        <p className="text-xl text-center items-center">
-          1,000,000,000,000 MAX SUPPLY
-          <br />
-          995,995,000,000 CIRCULATING SUPPLY
-          <br />
-          LP BURNED
-        </p>
-        <hr />
-        <ul className="text-xl text-center items-center">
-          <li>TOKENSNIFFER</li>
-          <li>BUBBLEMAPS</li>
-          <li>CHART</li>
-          <li>TOP HOLDERS</li>
-          <li>BASESCAN</li>
-        </ul>
+        <div className="tokenomics-content">
+          <p>
+            1,000,000,000,000 MAX SUPPLY
+            <br />
+            995,995,000,000 CIRCULATING SUPPLY
+            <br />
+            LP BURNED
+          </p>
+          <hr className="tokenomics-content" />
+          <ul>
+            <li>
+              <a href="https://tokensniffer.com/token/base/89enjphs0k2c1ekcq9qsx0cd41qb89s0n8ijf0113vnahpg086h6a4gk9nuz" target="_blank" rel="noopener noreferrer">
+                TOKENSNIFFER
+              </a>
+            </li>
+            <li>
+              <a href="https://app.bubblemaps.io/base/token/0xa2b9436d567a740357ca432b35582e93191e6a2f" target="_blank" rel="noopener noreferrer">
+                BUBBLEMAPS
+              </a>
+            </li>
+            <li>
+              <a href="https://dexscreener.com/base/0xfca463ffce3e9528253a545a3358bba848cabc48" target="_blank" rel="noopener noreferrer">
+                CHART
+              </a>
+            </li>
+            <li>
+              <a href="https://basescan.org/token/0xa2b9436d567a740357ca432b35582e93191e6a2f#balances" target="_blank" rel="noopener noreferrer">
+                TOP HOLDERS
+              </a>
+            </li>
+            <li>
+              <a href="https://basescan.org/token/0xa2b9436d567a740357ca432b35582e93191e6a2f" target="_blank" rel="noopener noreferrer">
+                BASESCAN
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </section>
+    </section >
   );
 };
 

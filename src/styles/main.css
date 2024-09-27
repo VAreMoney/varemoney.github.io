@@ -80,16 +80,18 @@ hr {
 }
 
 .socials-content {
-  @apply flex justify-center items-center w-2/3 mx-auto text-yellow;
+  @apply flex justify-center items-center w-2/3 mx-auto text-yellow text-6xl;
 }
-
 .socials-content a {
-  @apply text-yellow text-6xl inline-block transition-all duration-300 ease-in-out;
+  @apply text-yellow text-6xl;
+}
+.socials-content a:hover {
+  @apply transition-all text-7xl duration-300 ease-in-out;
 }
 
 .telegram-icon {
-  @apply inline-block transition-all duration-300 ease-in-out;
+  @apply inline-block;
 }
-.telegram-icon:hover {
-  @apply transform scale-110;
+.telegram-icon svg:hover {
+  @apply size-[4rem] transition-all duration-300 ease-in-out;
 }/*# sourceMappingURL=main.css.map */

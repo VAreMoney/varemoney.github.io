@@ -66,9 +66,9 @@ const Home: React.FC = () => {
             </span>
           </button>
         </div>
-        <hr className="w-full my-6" />
-        <div className="w-full center-content">
-          <p className="text-xl text-center">
+        <hr />
+        <div className="w-full text-3xl center-content">
+          <p className="text-3xl text-center">
             Stand with us, be the spark
             <br />
             In this revolution&apos;s arc,

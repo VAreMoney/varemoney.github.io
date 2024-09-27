@@ -1,23 +1,20 @@
 @import 'variables';
 
 body {
-    @apply text-foreground bg-background font-spaceMono pt-12; // Ensure this matches the header height
+    @apply text-foreground bg-background font-spaceMono pt-16; // Ensure this matches the header height
 }
 
 header {
-    @apply bg-black h-12 fixed top-0 mt-0 left-0 right-0 z-50;
-}
-
-header nav {
-    @apply w-full max-w-screen-xl mt-5 mx-auto;
-}
-
-header nav ul {
-    @apply flex justify-end items-center space-x-6 list-none p-0 m-0 pr-4;
-}
-
-header nav ul li {
-    @apply inline-block;
+    @apply bg-black h-16 fixed top-0 mt-0 left-0 right-0 z-50;
+    & nav {
+        @apply w-full max-w-screen-xl mt-5 mx-auto;
+        & ul {
+            @apply flex justify-end items-center space-x-6 list-none p-0 m-0 pr-4;
+            & li {
+                @apply inline-block;
+            }
+        }
+    }
 }
 
 h1 {
@@ -34,14 +31,14 @@ hr {
 }
 
 .navbar-link {
-    @apply text-foreground transition-all duration-300 ease-in-out no-underline;
+    @apply inline-flex text-center text-foreground transition-all duration-300 ease-in-out no-underline h-10;
 
     &:hover {
-        @apply underline transition-all ease-in-out;
+        @apply underline text-[1.1rem] transition-all ease-in-out;
     }
 
     &.active {
-        @apply underline;
+        @apply underline text-[1.1rem];
     }
 
     &.visited {
@@ -53,50 +50,171 @@ hr {
     @apply mt-0 w-3/4 mx-auto;
 }
 
-.copy-button {
-    @apply cursor-pointer bg-transparent border-none text-yellow text-xl inline-flex items-center;
-    position: relative;
-}
-
-.copy-button:hover {
-    @apply hover:underline border-yellow border-dashed text-[1.3rem] transition-all ease-in-out;
-}
-
-.copy-button:not(:hover) {
-    @apply text-xl border-none transition-opacity ease-in-out;
-}
-
 .tooltip {
     @apply fixed bg-black text-yellow text-sm py-1 px-2 rounded pointer-events-none font-spaceMono opacity-0 transition-opacity ease-in-out;
 }
 
-.copy-button:hover .tooltip {
-    @apply opacity-100;
+.copy-button {
+    @apply cursor-pointer bg-transparent border-none text-yellow text-xl inline-block items-center relative h-10;
+
+    &:hover {
+        @apply hover:underline border-yellow border-dashed text-[1.3rem] transition-all ease-in-out;
+    }
+    &:not(:hover) {
+        @apply text-xl border-none transition-opacity ease-in-out;
+    }
+    &:hover .tooltip {
+        @apply opacity-100;
+    }
 }
 
 .center-content {
-    @apply flex justify-center items-center text-center;
+    @apply flex justify-center items-center text-center text-xl;
 }
 
 .vision-content {
-    @apply flex justify-center items-center w-2/3 mx-auto;
+    @apply flex justify-center items-center w-2/3 mx-auto text-xl;
 }
 
 .socials-content {
-    @apply flex justify-center items-center w-2/3 mx-auto text-yellow text-6xl;
+    @apply inline-flex justify-center w-full items-center h-32 mx-auto text-yellow text-center;
+
+    & ul {
+        @apply flex justify-center items-center space-x-8 list-none p-0 m-0;
+    }
+
+    & li {
+        @apply inline-flex items-center justify-center h-16 w-16;
+    }
+
     & a {
-        @apply text-yellow text-6xl;
+        @apply text-yellow text-6xl transition-all duration-300 ease-in-out flex items-center justify-center;
     }
 
     & a:hover {
-        @apply transition-all text-7xl duration-300 ease-in-out;
+        @apply text-[4.2rem] overflow-visible;
+    }
+
+    & svg {
+        @apply transform transition-transform duration-300 ease-in-out;
+    }
+
+    & a:hover svg {
+        @apply scale-125;
     }
 }
 
 .telegram-icon {
-    @apply inline-block;
+    @apply inline-flex items-center justify-center h-full;
 
-    & svg:hover {
-        @apply size-[4rem] transition-all duration-300 ease-in-out;
+    & > * {
+        @apply transition-transform duration-300 ease-in-out;
+    }
+
+    & > *:hover {
+        @apply transition-all duration-300 ease-in-out size-[4.2rem] align-middle content-center;
+    }
+}
+
+.buy-content {
+    @apply inline-flex justify-center w-full items-center h-32 mx-auto text-center;
+
+    & ul {
+        @apply flex justify-center items-center space-x-8 list-none p-0 m-0;
+    }
+
+    & li {
+        @apply inline-flex items-center justify-center h-24 w-24;
+    }
+
+    & a {
+        @apply text-white text-6xl transition-all duration-300 ease-in-out flex items-center justify-center;
+    }
+
+    & a:hover {
+        @apply text-[4.2rem] overflow-visible;
+    }
+
+    & svg {
+        @apply transform transition-transform duration-300 ease-in-out;
+    }
+
+    & a:hover svg {
+        @apply scale-125;
+    }
+}
+
+.uniswap-icon {
+    @apply inline-flex items-center justify-center h-full;
+
+    & > * {
+        @apply transition-transform duration-300 ease-in-out;
+    }
+
+    & > *:hover {
+        @apply transition-all duration-300 ease-in-out size-[7.0rem] align-middle content-center text-uniswap-pink;
+    }
+}
+
+.matcha-icon {
+    @apply inline-flex items-center justify-center h-full;
+
+    & > * {
+        @apply transition-transform duration-300 ease-in-out;
+    }
+
+    & > *:hover {
+        @apply transition-all duration-300 ease-in-out size-[7.0rem] align-middle content-center text-matcha-green;
+    }
+}
+
+.flooz-icon {
+    @apply inline-flex items-center justify-center h-full;
+
+    & > * {
+        @apply transition-all duration-300 ease-in-out;
+    }
+
+    & .flooz-background {
+        @apply text-white;
+    }
+
+    & .flooz-star {
+        @apply text-black;
+    }
+
+    &:hover {
+        @apply transition-all duration-300 ease-in-out;
+
+        & .flooz-background {
+            @apply text-flooz-blue transition-all duration-300 ease-in-out;
+        }
+
+        & .flooz-star {
+            @apply text-white transition-all duration-300 ease-in-out;
+        }
+
+        & > * {
+            @apply size-[7.0rem] align-middle content-center transition-all duration-300 ease-in-out;
+        }
+    }
+}
+
+.tokenomics-content {
+    @apply flex flex-col justify-center items-center text-center text-4xl w-full mx-auto;
+    & ul {
+        @apply text-2xl flex flex-row justify-center items-center space-x-4 list-none p-0 m-5;
+
+        & li {
+            @apply inline-block h-10;
+        }
+
+        & a {
+            @apply text-yellow transition-all duration-300 ease-in-out no-underline h-10;
+        }
+
+        & a:hover {
+            @apply transition-all duration-300 ease-in-out text-[1.75rem] underline;
+        }
     }
 }
