@@ -36,13 +36,14 @@ const Socials: React.FC = () => {
         <div className="socials-content">
           <div className="text-xl flex justify-center items-center space-x-4">
             <a href="https://www.tiktok.com/@v_are_money" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faTiktok} />
+              <FontAwesomeIcon icon={faTiktok} className="transition-transform duration-300 ease-in-out hover:scale-110" />
             </a>
             <a href="https://x.com/varemoney" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon
                 icon={twitterIcon}
                 onMouseEnter={() => setTwitterIcon(faTwitter)}
                 onMouseLeave={() => setTwitterIcon(faXTwitter)}
+                className="transition-transform duration-300 ease-in-out hover:scale-110"
               />
             </a>
             <a href="https://t.me/varemoney" target="_blank" rel="noopener noreferrer">

@@ -7,6 +7,7 @@ const __dirname = path.dirname(__filename);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  productionBrowserSourceMaps: true, // Enable source maps in production
   webpack: (config, { dev, isServer }) => {
     config.resolve.alias["@styles"] = path.join(__dirname, "src/styles");
 

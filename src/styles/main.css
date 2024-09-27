@@ -86,9 +86,6 @@ hr {
 .socials-content a {
   @apply text-yellow text-6xl inline-block transition-all duration-300 ease-in-out;
 }
-.socials-content a:hover {
-  @apply transform scale-110;
-}
 
 .telegram-icon {
   @apply inline-block transition-all duration-300 ease-in-out;
