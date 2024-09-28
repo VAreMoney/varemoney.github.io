@@ -7,7 +7,7 @@ interface TelegramIconProps {
 
 export const TelegramIcon: React.FC<TelegramIconProps> = ({ className = "", style }) => (
   <div className={`telegram-icon ${className}`} style={style}>
-    <svg width="48px" height="48px" viewBox="185 300 550 450" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <svg width="58px" height="58px" viewBox="185 300 550 450" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <title>Telegram Airplane</title>
       <desc>Telegram logo airplane icon</desc>
       <g id="Airplane" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">

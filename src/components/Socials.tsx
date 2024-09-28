@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTiktok,
-  faXTwitter,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+import { faTiktok, faXTwitter, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { TelegramIcon } from "./icons/TelegramIcon";
 import Image from "next/image";
+import Tooltip from './Tooltip';
 
 const Socials: React.FC = () => {
   const [twitterIcon, setTwitterIcon] = useState(faXTwitter);
@@ -36,23 +33,41 @@ const Socials: React.FC = () => {
         <div className="socials-content">
           <ul>
             <li>
-              <a href="https://www.tiktok.com/@v_are_money" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faTiktok} />
-              </a>
+              <Tooltip text="TikTok">
+                <a
+                  href="https://www.tiktok.com/@v_are_money"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon icon={faTiktok} />
+                </a>
+              </Tooltip>
             </li>
             <li>
-              <a href="https://x.com/varemoney" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon
-                  icon={twitterIcon}
-                  onMouseEnter={() => setTwitterIcon(faTwitter)}
-                  onMouseLeave={() => setTwitterIcon(faXTwitter)}
-                />
-              </a>
+              <Tooltip text="X (formerly Twitter)">
+                <a
+                  href="https://x.com/varemoney"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon
+                    icon={twitterIcon}
+                    onMouseEnter={() => setTwitterIcon(faTwitter)}
+                    onMouseLeave={() => setTwitterIcon(faXTwitter)}
+                  />
+                </a>
+              </Tooltip>
             </li>
-            <li>
-              <a href="https://t.me/varemoney" target="_blank" rel="noopener noreferrer" className="telegram-icon">
-                <TelegramIcon />
-              </a>
+            <li className="telegram-icon">
+              <Tooltip text="Telegram">
+                <a
+                  href="https://t.me/varemoney"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <TelegramIcon />
+                </a>
+              </Tooltip>
             </li>
           </ul>
         </div>

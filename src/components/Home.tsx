@@ -2,26 +2,16 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
-import React, { useState, useCallback } from "react";
+import React from "react";
 import Image from "next/image";
+import Tooltip from './Tooltip';
 
 const Home: React.FC = () => {
-  const [tooltipText, setTooltipText] = useState("Click to copy");
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const contractAddress = "0xA2b9436D567A740357ca432b35582E93191e6a2F";
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(contractAddress).then(() => {
-      setTooltipText("Copied!");
-      setTimeout(() => {
-        setTooltipText("Click to copy");
-      }, 2000);
-    });
+    navigator.clipboard.writeText(contractAddress);
   };
-
-  const handleMouseMove = useCallback((event: React.MouseEvent) => {
-    setTooltipPosition({ x: event.clientX, y: event.clientY });
-  }, []);
 
   return (
     <section
@@ -47,24 +37,15 @@ const Home: React.FC = () => {
         </div>
         <h1>v are the original</h1>
         <div className="w-full center-content m-5 p-5">
-          <button
-            className="copy-button"
-            onClick={copyToClipboard}
-            onMouseMove={handleMouseMove}
-            aria-label="Copy token to clipboard"
-          >
-            CA {contractAddress} <FontAwesomeIcon icon={faCopy} width={24} height={24} />
-            <span
-              className="tooltip"
-              style={{
-                left: `${tooltipPosition.x}px`,
-                top: `${tooltipPosition.y - 30}px`,
-                transform: 'translateX(-50%)',
-              }}
+          <Tooltip text="Click to copy" onCopy={copyToClipboard} showOnClick={true} useDiv={true}>
+            <button
+              className="copy-button"
+              aria-label="Copy token to clipboard"
             >
-              {tooltipText}
-            </span>
-          </button>
+              CA {contractAddress} <FontAwesomeIcon icon={faCopy} width={24} height={24} />
+            </button>
+          </Tooltip>
+
         </div>
         <hr />
         <div className="w-full text-3xl center-content">

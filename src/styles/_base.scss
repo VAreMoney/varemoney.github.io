@@ -52,24 +52,33 @@ hr {
 
 .tooltip {
     @apply fixed bg-black text-yellow text-sm py-1 px-2 rounded pointer-events-none font-spaceMono opacity-0 transition-opacity ease-in-out;
+
+    &.visible {
+        @apply opacity-100 bg-opacity-80 text-opacity-100 border-none;
+    
+    }
 }
 
+  
 .copy-button {
-    @apply cursor-pointer bg-transparent border-none text-yellow text-xl inline-block items-center relative h-10;
+@apply cursor-pointer border-none text-yellow text-xl inline-block items-center relative h-10;
 
     &:hover {
         @apply hover:underline border-yellow border-dashed text-[1.3rem] transition-all ease-in-out;
     }
+
     &:not(:hover) {
-        @apply text-xl border-none transition-opacity ease-in-out;
-    }
-    &:hover .tooltip {
-        @apply opacity-100;
+        @apply text-xl border-none transition-all ease-in-out;
     }
 }
+  
 
 .center-content {
     @apply flex justify-center items-center text-center text-xl;
+
+    & button{
+        @apply bg-transparent border-none;
+    }
 }
 
 .vision-content {
@@ -78,6 +87,10 @@ hr {
 
 .socials-content {
     @apply inline-flex justify-center w-full items-center h-32 mx-auto text-yellow text-center;
+
+    & button {
+        @apply bg-transparent border-none;
+    }
 
     & ul {
         @apply flex justify-center items-center space-x-8 list-none p-0 m-0;
@@ -97,27 +110,37 @@ hr {
 
     & svg {
         @apply transform transition-transform duration-300 ease-in-out;
-    }
-
-    & a:hover svg {
-        @apply scale-125;
+        &:hover{
+            @apply scale-125;
+        }
     }
 }
 
 .telegram-icon {
     @apply inline-flex items-center justify-center h-full;
 
-    & > * {
-        @apply transition-transform duration-300 ease-in-out;
+    & button{
+        @apply bg-transparent border-none;
     }
 
-    & > *:hover {
-        @apply transition-all duration-300 ease-in-out size-[4.2rem] align-middle content-center;
+    & > * {
+        @apply transition-transform duration-300 ease-in-out;
+        &:hover {
+            @apply transition-all duration-300 ease-in-out size-[4.2rem] align-middle content-center;
+        }
+
+        &:not(:hover) {
+            @apply transition-all duration-300 ease-in-out;
+        }
     }
 }
 
 .buy-content {
     @apply inline-flex justify-center w-full items-center h-32 mx-auto text-center;
+
+    & button{
+        @apply bg-transparent border-none;
+    }
 
     & ul {
         @apply flex justify-center items-center space-x-8 list-none p-0 m-0;
@@ -149,10 +172,14 @@ hr {
 
     & > * {
         @apply transition-transform duration-300 ease-in-out;
-    }
+    
+        &:hover {
+            @apply transition-all duration-300 ease-in-out size-[7.0rem] align-middle content-center text-uniswap-pink;
+        }
 
-    & > *:hover {
-        @apply transition-all duration-300 ease-in-out size-[7.0rem] align-middle content-center text-uniswap-pink;
+        &:not(:hover) {
+            @apply transition-all duration-300 ease-in-out;
+        }
     }
 }
 
@@ -161,10 +188,14 @@ hr {
 
     & > * {
         @apply transition-transform duration-300 ease-in-out;
-    }
+    
+        &:hover {
+            @apply transition-all duration-300 ease-in-out size-[7.0rem] align-middle content-center text-matcha-green;
+        }
 
-    & > *:hover {
-        @apply transition-all duration-300 ease-in-out size-[7.0rem] align-middle content-center text-matcha-green;
+        &:not(:hover) {
+            @apply transition-all duration-300 ease-in-out;
+        }
     }
 }
 
@@ -198,6 +229,22 @@ hr {
             @apply size-[7.0rem] align-middle content-center transition-all duration-300 ease-in-out;
         }
     }
+
+    &:not(:hover) {
+        @apply transition-all duration-300 ease-in-out;
+
+        & .flooz-background {
+            @apply transition-all duration-300 ease-in-out;
+        }
+
+        & .flooz-star {
+            @apply transition-all duration-300 ease-in-out;
+        }
+
+        & > * {
+            @apply transition-all duration-300 ease-in-out;
+        }
+    }
 }
 
 .tokenomics-content {
@@ -211,10 +258,38 @@ hr {
 
         & a {
             @apply text-yellow transition-all duration-300 ease-in-out no-underline h-10;
-        }
+        
+            &:hover {
+                @apply transition-all duration-300 ease-in-out text-[1.75rem] underline;
+            }
 
-        & a:hover {
-            @apply transition-all duration-300 ease-in-out text-[1.75rem] underline;
+            &:not(:hover) {
+                @apply transition-all duration-300 ease-in-out;
+            }
+        }
+    }
+}
+
+footer {
+    @apply w-full mt-8;
+
+    & .footer-content{
+        @apply container mx-auto px-4 py-6 center-content text-center;
+
+        & a { 
+            @apply no-underline mx-2 text-yellow;
+            
+            &:visited{
+                @apply no-underline mx-2 text-yellow;
+            }
+
+            &:hover {
+                @apply transition-all ease-linear underline underline-offset-8 font-extrabold;
+            }
+
+            &:not(:hover) {
+                @apply transition-all ease-linear;
+            }
         }
     }
 }

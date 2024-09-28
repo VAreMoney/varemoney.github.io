@@ -1,21 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 body {
-  @apply text-foreground bg-background font-spaceMono pt-12;
+  @apply text-foreground bg-background font-spaceMono pt-16;
 }
 
 header {
-  @apply bg-black h-12 fixed top-0 mt-0 left-0 right-0 z-50;
+  @apply bg-black h-16 fixed top-0 mt-0 left-0 right-0 z-50;
 }
-
 header nav {
   @apply w-full max-w-screen-xl mt-5 mx-auto;
 }
-
 header nav ul {
   @apply flex justify-end items-center space-x-6 list-none p-0 m-0 pr-4;
 }
-
 header nav ul li {
   @apply inline-block;
 }
@@ -34,13 +31,13 @@ hr {
 }
 
 .navbar-link {
-  @apply text-foreground transition-all duration-300 ease-in-out no-underline;
+  @apply inline-flex text-center text-foreground transition-all duration-300 ease-in-out no-underline h-10;
 }
 .navbar-link:hover {
-  @apply underline transition-all ease-in-out;
+  @apply underline text-[1.1rem] transition-all ease-in-out;
 }
 .navbar-link.active {
-  @apply underline;
+  @apply underline text-[1.1rem];
 }
 .navbar-link.visited {
   @apply text-foreground transition-all duration-300 ease-in-out no-underline;
@@ -50,48 +47,197 @@ hr {
   @apply mt-0 w-3/4 mx-auto;
 }
 
-.copy-button {
-  @apply cursor-pointer bg-transparent border-none text-yellow text-xl inline-flex items-center;
-  position: relative;
-}
-
-.copy-button:hover {
-  @apply hover:underline border-yellow border-dashed text-[1.3rem] transition-all ease-in-out;
-}
-
-.copy-button:not(:hover) {
-  @apply text-xl border-none transition-opacity ease-in-out;
-}
-
 .tooltip {
   @apply fixed bg-black text-yellow text-sm py-1 px-2 rounded pointer-events-none font-spaceMono opacity-0 transition-opacity ease-in-out;
 }
+.tooltip.visible {
+  @apply opacity-100 bg-opacity-80 text-opacity-100 border-none;
+}
 
-.copy-button:hover .tooltip {
-  @apply opacity-100;
+.copy-button {
+  @apply cursor-pointer border-none text-yellow text-xl inline-block items-center relative h-10;
+}
+.copy-button:hover {
+  @apply hover:underline border-yellow border-dashed text-[1.3rem] transition-all ease-in-out;
+}
+.copy-button:not(:hover) {
+  @apply text-xl border-none transition-all ease-in-out;
 }
 
 .center-content {
-  @apply flex justify-center items-center text-center;
+  @apply flex justify-center items-center text-center text-xl;
+}
+.center-content button {
+  @apply bg-transparent border-none;
 }
 
 .vision-content {
-  @apply flex justify-center items-center w-2/3 mx-auto;
+  @apply flex justify-center items-center w-2/3 mx-auto text-xl;
 }
 
 .socials-content {
-  @apply flex justify-center items-center w-2/3 mx-auto text-yellow text-6xl;
+  @apply inline-flex justify-center w-full items-center h-32 mx-auto text-yellow text-center;
+}
+.socials-content button {
+  @apply bg-transparent border-none;
+}
+.socials-content ul {
+  @apply flex justify-center items-center space-x-8 list-none p-0 m-0;
+}
+.socials-content li {
+  @apply inline-flex items-center justify-center h-16 w-16;
 }
 .socials-content a {
-  @apply text-yellow text-6xl;
+  @apply text-yellow text-6xl transition-all duration-300 ease-in-out flex items-center justify-center;
 }
 .socials-content a:hover {
-  @apply transition-all text-7xl duration-300 ease-in-out;
+  @apply text-[4.2rem] overflow-visible;
+}
+.socials-content svg {
+  @apply transform transition-transform duration-300 ease-in-out;
+}
+.socials-content svg:hover {
+  @apply scale-125;
 }
 
 .telegram-icon {
-  @apply inline-block;
+  @apply inline-flex items-center justify-center h-full;
 }
-.telegram-icon svg:hover {
-  @apply size-[4rem] transition-all duration-300 ease-in-out;
+.telegram-icon button {
+  @apply bg-transparent border-none;
+}
+.telegram-icon > * {
+  @apply transition-transform duration-300 ease-in-out;
+}
+.telegram-icon > *:hover {
+  @apply transition-all duration-300 ease-in-out size-[4.2rem] align-middle content-center;
+}
+.telegram-icon > *:not(:hover) {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.buy-content {
+  @apply inline-flex justify-center w-full items-center h-32 mx-auto text-center;
+}
+.buy-content button {
+  @apply bg-transparent border-none;
+}
+.buy-content ul {
+  @apply flex justify-center items-center space-x-8 list-none p-0 m-0;
+}
+.buy-content li {
+  @apply inline-flex items-center justify-center h-24 w-24;
+}
+.buy-content a {
+  @apply text-white text-6xl transition-all duration-300 ease-in-out flex items-center justify-center;
+}
+.buy-content a:hover {
+  @apply text-[4.2rem] overflow-visible;
+}
+.buy-content svg {
+  @apply transform transition-transform duration-300 ease-in-out;
+}
+.buy-content a:hover svg {
+  @apply scale-125;
+}
+
+.uniswap-icon {
+  @apply inline-flex items-center justify-center h-full;
+}
+.uniswap-icon > * {
+  @apply transition-transform duration-300 ease-in-out;
+}
+.uniswap-icon > *:hover {
+  @apply transition-all duration-300 ease-in-out size-[7.0rem] align-middle content-center text-uniswap-pink;
+}
+.uniswap-icon > *:not(:hover) {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.matcha-icon {
+  @apply inline-flex items-center justify-center h-full;
+}
+.matcha-icon > * {
+  @apply transition-transform duration-300 ease-in-out;
+}
+.matcha-icon > *:hover {
+  @apply transition-all duration-300 ease-in-out size-[7.0rem] align-middle content-center text-matcha-green;
+}
+.matcha-icon > *:not(:hover) {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.flooz-icon {
+  @apply inline-flex items-center justify-center h-full;
+}
+.flooz-icon > * {
+  @apply transition-all duration-300 ease-in-out;
+}
+.flooz-icon .flooz-background {
+  @apply text-white;
+}
+.flooz-icon .flooz-star {
+  @apply text-black;
+}
+.flooz-icon:hover {
+  @apply transition-all duration-300 ease-in-out;
+}
+.flooz-icon:hover .flooz-background {
+  @apply text-flooz-blue transition-all duration-300 ease-in-out;
+}
+.flooz-icon:hover .flooz-star {
+  @apply text-white transition-all duration-300 ease-in-out;
+}
+.flooz-icon:hover > * {
+  @apply size-[7.0rem] align-middle content-center transition-all duration-300 ease-in-out;
+}
+.flooz-icon:not(:hover) {
+  @apply transition-all duration-300 ease-in-out;
+}
+.flooz-icon:not(:hover) .flooz-background {
+  @apply transition-all duration-300 ease-in-out;
+}
+.flooz-icon:not(:hover) .flooz-star {
+  @apply transition-all duration-300 ease-in-out;
+}
+.flooz-icon:not(:hover) > * {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.tokenomics-content {
+  @apply flex flex-col justify-center items-center text-center text-4xl w-full mx-auto;
+}
+.tokenomics-content ul {
+  @apply text-2xl flex flex-row justify-center items-center space-x-4 list-none p-0 m-5;
+}
+.tokenomics-content ul li {
+  @apply inline-block h-10;
+}
+.tokenomics-content ul a {
+  @apply text-yellow transition-all duration-300 ease-in-out no-underline h-10;
+}
+.tokenomics-content ul a:hover {
+  @apply transition-all duration-300 ease-in-out text-[1.75rem] underline;
+}
+.tokenomics-content ul a:not(:hover) {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+footer {
+  @apply w-full mt-8;
+}
+footer .footer-content {
+  @apply container mx-auto px-4 py-6 center-content text-center;
+}
+footer .footer-content a {
+  @apply no-underline mx-2 text-yellow;
+}
+footer .footer-content a:visited {
+  @apply no-underline mx-2 text-yellow;
+}
+footer .footer-content a:hover {
+  @apply transition-all ease-linear underline underline-offset-8 font-extrabold;
+}
+footer .footer-content a:not(:hover) {
+  @apply transition-all ease-linear;
 }/*# sourceMappingURL=main.css.map */
