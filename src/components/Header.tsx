@@ -43,7 +43,10 @@ const Header: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-black py-4 z-50 w-full">
       <nav className="container mx-auto">
-        <ul className="flex justify-center items-center space-x-6">
+        <div className="header-icon">
+          &nbsp;
+        </div>
+        <ul>
           {["home", "vision", "tokenomics", /*"whitepaper",*/ "socials", "buy"].map(
             (section) => (
               <li key={section} className="inline-block">

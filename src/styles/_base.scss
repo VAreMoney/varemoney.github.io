@@ -1,18 +1,21 @@
 @import 'variables';
 
 body {
-    @apply text-foreground bg-background font-spaceMono pt-16; // Ensure this matches the header height
+    @apply text-foreground bg-background font-spaceMono pt-24; // Ensure this matches the header height
 }
 
 header {
-    @apply bg-black h-16 fixed top-0 mt-0 left-0 right-0 z-50;
+    @apply bg-black h-24 fixed top-0 mt-0 left-0 right-0 z-50;
     & nav {
-        @apply w-full max-w-screen-xl mt-5 mx-auto;
+        @apply w-full max-w-screen-xl mx-auto my-6;
         & ul {
-            @apply flex justify-end items-center space-x-6 list-none p-0 m-0 pr-4;
+            @apply flex justify-end items-center space-x-6 list-none p-0 m-0;
             & li {
-                @apply inline-block;
+                @apply inline-block mt-4;
             }
+        }
+        & .header-icon {
+            @apply float-start justify-start bg-[url('/images/v-logo.svg')] bg-no-repeat bg-center bg-contain h-32 w-32;
         }
     }
 }
