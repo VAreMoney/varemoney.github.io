@@ -15,7 +15,7 @@ header {
             }
         }
         & .header-icon {
-            @apply float-start justify-start bg-[url('/images/v-logo.svg')] bg-no-repeat bg-center bg-contain h-32 w-32;
+            @apply cursor-pointer float-start justify-start bg-[url('/images/v-logo.svg')] bg-no-repeat bg-center bg-contain h-32 w-32;
         }
     }
 }

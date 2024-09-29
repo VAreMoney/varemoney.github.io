@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 const Header: React.FC = () => {
@@ -43,9 +44,10 @@ const Header: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 bg-black py-4 z-50 w-full">
       <nav className="container mx-auto">
-        <div className="header-icon">
-          &nbsp;
-        </div>
+        <Link href="/">
+          <div className="header-icon">
+          </div>
+        </Link>
         <ul>
           {["home", "vision", "tokenomics", /*"whitepaper",*/ "socials", "buy"].map(
             (section) => (
