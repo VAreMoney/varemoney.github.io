@@ -1,20 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 body {
-  @apply text-foreground bg-background font-spaceMono pt-16;
+  @apply text-foreground bg-background font-spaceMono pt-24;
 }
 
 header {
-  @apply bg-black h-16 fixed top-0 mt-0 left-0 right-0 z-50;
+  @apply bg-black h-24 fixed top-0 mt-0 left-0 right-0 z-50;
 }
 header nav {
-  @apply w-full max-w-screen-xl mt-5 mx-auto;
+  @apply w-full max-w-screen-xl mx-auto my-6;
 }
 header nav ul {
-  @apply flex justify-end items-center space-x-6 list-none p-0 m-0 pr-4;
+  @apply flex justify-end items-center space-x-6 list-none p-0 m-0;
 }
 header nav ul li {
-  @apply inline-block;
+  @apply inline-block mt-4;
+}
+header nav .header-icon {
+  @apply cursor-pointer float-start justify-start bg-[url("/images/v-logo.svg")] bg-no-repeat bg-center bg-contain h-32 w-32;
 }
 
 h1 {
@@ -48,7 +51,7 @@ hr {
 }
 
 .tooltip {
-  @apply fixed bg-black text-yellow text-sm py-1 px-2 rounded pointer-events-none font-spaceMono opacity-0 transition-opacity ease-in-out;
+  @apply fixed bg-black text-yellow text-lg py-1 px-2 rounded pointer-events-none font-spaceMono opacity-0 transition-opacity ease-in-out;
 }
 .tooltip.visible {
   @apply opacity-100 bg-opacity-80 text-opacity-100 border-none;
@@ -240,4 +243,56 @@ footer .footer-content a:hover {
 }
 footer .footer-content a:not(:hover) {
   @apply transition-all ease-linear;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -1;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #e0ff00;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 1s forwards;
 }/*# sourceMappingURL=main.css.map */

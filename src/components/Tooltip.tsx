@@ -17,7 +17,7 @@ const Tooltip: React.FC<TooltipProps> = ({ children, text, onCopy, showOnClick =
     const updatePosition = useCallback(() => {
         if (tooltipRef.current) {
             tooltipRef.current.style.left = `${positionRef.current.x}px`;
-            tooltipRef.current.style.top = `${positionRef.current.y - 30}px`;
+            tooltipRef.current.style.top = `${positionRef.current.y - 45}px`;
             tooltipRef.current.style.transform = 'translateX(-50%)';
         }
         requestAnimationFrame(updatePosition);

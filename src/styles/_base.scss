@@ -54,7 +54,7 @@ hr {
 }
 
 .tooltip {
-    @apply fixed bg-black text-yellow text-sm py-1 px-2 rounded pointer-events-none font-spaceMono opacity-0 transition-opacity ease-in-out;
+    @apply fixed bg-black text-yellow text-lg py-1 px-2 rounded pointer-events-none font-spaceMono opacity-0 transition-opacity ease-in-out;
 
     &.visible {
         @apply opacity-100 bg-opacity-80 text-opacity-100 border-none;
