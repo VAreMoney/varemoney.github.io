@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Scrolling Collision Effect</title>
+        <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="text/babel">
+            function App() {
+                const [scrollY, setScrollY] = React.useState(0);
+                const boxHeight = 200;
+                const gap = 800;
+                const topGap = 300;
+                const fadeOutDistance = 300;
+                const fadeInDistance = 200;
+
+                const collisionPoint1 = topGap + boxHeight + gap;
+                const collisionPoint2 = collisionPoint1 + boxHeight + gap;
+
+                React.useEffect(() => {
+                    const handleScroll = () => {
+                        setScrollY(window.scrollY);
+                        console.log(window.scrollY);
+                        if (
+                            window.scrollY >=
+                            collisionPoint1 - topGap - boxHeight
+                        ) {
+                            console.log('Collision 1 started!');
+                        }
+                        if (
+                            window.scrollY >=
+                            collisionPoint2 - topGap - boxHeight
+                        ) {
+                            console.log('Collision 2 started!');
+                        }
+                    };
+
+                    window.addEventListener('scroll', handleScroll);
+                    return () => {
+                        window.removeEventListener('scroll', handleScroll);
+                    };
+                }, [collisionPoint1, collisionPoint2, topGap]);
+
+                const isColliding1 =
+                    scrollY >= collisionPoint1 - topGap - boxHeight;
+                const isColliding2 =
+                    scrollY >= collisionPoint2 - topGap - boxHeight;
+
+                const collisionProgress1 = Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        (scrollY - (collisionPoint1 - topGap - boxHeight)) /
+                            boxHeight
+                    )
+                );
+                const collisionProgress2 = Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        (scrollY - (collisionPoint2 - topGap - boxHeight)) /
+                            boxHeight
+                    )
+                );
+
+                const box1Position =
+                    scrollY < collisionPoint1 - topGap - boxHeight
+                        ? Math.max(topGap, topGap - scrollY)
+                        : collisionProgress1 < 1
+                          ? topGap - boxHeight * collisionProgress1
+                          : topGap -
+                            boxHeight -
+                            (scrollY - (collisionPoint1 - topGap));
+
+                const box2Position =
+                    scrollY < collisionPoint2 - topGap - boxHeight
+                        ? Math.max(
+                              topGap,
+                              Math.min(
+                                  collisionPoint1 - scrollY,
+                                  topGap + boxHeight + gap
+                              )
+                          )
+                        : collisionProgress2 < 1
+                          ? topGap - boxHeight * collisionProgress2
+                          : topGap -
+                            boxHeight -
+                            (scrollY - (collisionPoint2 - topGap));
+
+                const box3Position = Math.max(
+                    topGap,
+                    Math.min(
+                        collisionPoint2 - scrollY,
+                        topGap + boxHeight + gap * 2
+                    )
+                );
+
+                const box1Opacity = isColliding1
+                    ? Math.max(
+                          0,
+                          1 -
+                              (scrollY - (collisionPoint1 - topGap)) /
+                                  fadeOutDistance
+                      )
+                    : 1;
+
+                const fadeInStartPoint1 =
+                    collisionPoint1 - topGap - boxHeight - fadeInDistance - 100;
+                const fadeInStartPoint2 =
+                    collisionPoint2 - topGap - boxHeight - fadeInDistance - 100;
+
+                const box2Opacity = isColliding2
+                    ? Math.max(
+                          0,
+                          1 -
+                              (scrollY - (collisionPoint2 - topGap)) /
+                                  fadeOutDistance
+                      )
+                    : Math.min(
+                          1,
+                          (scrollY - fadeInStartPoint1) / fadeInDistance
+                      );
+
+                const box3Opacity = Math.min(
+                    1,
+                    (scrollY - fadeInStartPoint2) / fadeInDistance
+                );
+
+                return (
+                    <div className="h-[600vh] relative">
+                        <div
+                            className="fixed top-0 left-1/2 w-3/4 h-[200px] bg-blue-500 flex items-center justify-center text-white text-2xl transform -translate-x-1/2"
+                            style={{
+                                transform: `translateX(-50%) translateY(${box1Position}px)`,
+                                transition:
+                                    'transform 0.1s ease-out, opacity 0.3s ease-out',
+                                opacity: box1Opacity,
+                            }}
+                        >
+                            Box 1.0
+                            <br />
+                            Box 1.1
+                            <br />
+                            Box 1.2
+                            <br />
+                            Box 1.3
+                            <br />
+                            Box 1.4
+                            <br />
+                            Box 1.5
+                        </div>
+                        <div
+                            className="fixed top-0 left-1/2 w-3/4 text-center text-xl transform -translate-x-1/2"
+                            style={{
+                                transform: `translateX(-50%) translateY(${box1Position + boxHeight + 20}px)`,
+                                transition:
+                                    'transform 0.1s ease-out, opacity 0.3s ease-out',
+                                opacity: isColliding1 ? 0 : 1,
+                            }}
+                        >
+                            Additional text below Box 1
+                        </div>
+                        <div
+                            className="fixed top-0 left-1/2 w-3/4 text-center text-xl transform -translate-x-1/2"
+                            style={{
+                                transform: `translateX(-50%) translateY(${topGap + boxHeight + 20}px)`,
+                                transition: 'opacity 0.3s ease-out',
+                                opacity: isColliding1 && !isColliding2 ? 1 : 0,
+                            }}
+                        >
+                            Additional text below Box 2
+                        </div>
+                        <div
+                            className="fixed top-0 left-1/2 w-3/4 h-[200px] bg-red-500 flex items-center justify-center text-white text-2xl transform -translate-x-1/2"
+                            style={{
+                                transform: `translateX(-50%) translateY(${box2Position}px)`,
+                                transition:
+                                    'transform 0.1s ease-out, opacity 0.3s ease-out',
+                                opacity: box2Opacity,
+                            }}
+                        >
+                            Box 2.0
+                            <br />
+                            Box 2.1
+                            <br />
+                            Box 2.2
+                            <br />
+                            Box 2.3
+                            <br />
+                            Box 2.4
+                            <br />
+                            Box 2.5
+                        </div>
+                        <div
+                            className="fixed top-0 left-1/2 w-3/4 text-center text-xl transform -translate-x-1/2"
+                            style={{
+                                transform: `translateX(-50%) translateY(${topGap + boxHeight + 20}px)`,
+                                transition: 'opacity 0.3s ease-out',
+                                opacity: isColliding2 ? 1 : 0,
+                            }}
+                        >
+                            Additional text below Box 3
+                        </div>
+                        <div
+                            className="fixed top-0 left-1/2 w-3/4 h-[200px] bg-green-500 flex items-center justify-center text-white text-2xl transform -translate-x-1/2"
+                            style={{
+                                transform: `translateX(-50%) translateY(${box3Position}px)`,
+                                transition:
+                                    'transform 0.1s ease-out, opacity 0.3s ease-out',
+                                opacity: box3Opacity,
+                            }}
+                        >
+                            Box 3.0
+                            <br />
+                            Box 3.1
+                            <br />
+                            Box 3.2
+                            <br />
+                            Box 3.3
+                            <br />
+                            Box 3.4
+                            <br />
+                            Box 3.5
+                        </div>
+                    </div>
+                );
+            }
+
+            ReactDOM.render(<App />, document.getElementById('root'));
+        </script>
+    </body>
+</html>
