@@ -1,7 +1,7 @@
 @import 'variables';
 
 body {
-    @apply text-foreground bg-background font-spaceMono pt-24; // Ensure this matches the header height
+    @apply text-foreground bg-background font-spaceMono pt-24 pb-12; // Ensure this matches the header and footer height
 }
 
 header {
@@ -58,13 +58,11 @@ hr {
 
     &.visible {
         @apply opacity-100 bg-opacity-80 text-opacity-100 border-none;
-    
     }
 }
 
-  
 .copy-button {
-@apply cursor-pointer border-none text-yellow text-xl inline-block items-center relative h-10;
+    @apply cursor-pointer border-none text-yellow text-xl inline-block items-center relative h-10;
 
     &:hover {
         @apply hover:underline border-yellow border-dashed text-[1.3rem] transition-all ease-in-out;
@@ -74,12 +72,11 @@ hr {
         @apply text-xl border-none transition-all ease-in-out;
     }
 }
-  
 
 .center-content {
     @apply flex justify-center items-center text-center text-xl;
 
-    & button{
+    & button {
         @apply bg-transparent border-none;
     }
 }
@@ -113,7 +110,7 @@ hr {
 
     & svg {
         @apply transform transition-transform duration-300 ease-in-out;
-        &:hover{
+        &:hover {
             @apply scale-125;
         }
     }
@@ -122,7 +119,7 @@ hr {
 .telegram-icon {
     @apply inline-flex items-center justify-center h-full;
 
-    & button{
+    & button {
         @apply bg-transparent border-none;
     }
 
@@ -141,7 +138,7 @@ hr {
 .buy-content {
     @apply inline-flex justify-center w-full items-center h-32 mx-auto text-center;
 
-    & button{
+    & button {
         @apply bg-transparent border-none;
     }
 
@@ -175,7 +172,6 @@ hr {
 
     & > * {
         @apply transition-transform duration-300 ease-in-out;
-    
         &:hover {
             @apply transition-all duration-300 ease-in-out size-[7.0rem] align-middle content-center text-uniswap-pink;
         }
@@ -191,7 +187,6 @@ hr {
 
     & > * {
         @apply transition-transform duration-300 ease-in-out;
-    
         &:hover {
             @apply transition-all duration-300 ease-in-out size-[7.0rem] align-middle content-center text-matcha-green;
         }
@@ -261,7 +256,7 @@ hr {
 
         & a {
             @apply text-yellow transition-all duration-300 ease-in-out no-underline h-10;
-        
+
             &:hover {
                 @apply transition-all duration-300 ease-in-out text-[1.75rem] underline;
             }
@@ -274,15 +269,15 @@ hr {
 }
 
 footer {
-    @apply w-full mt-8;
+    @apply bg-black h-10 fixed bottom-0 left-0 right-0 z-50 border-yellow border-solid border-0 border-t-[1px] flex items-center justify-center;
 
-    & .footer-content{
-        @apply container mx-auto px-4 py-6 center-content text-center;
+    & .footer-content {
+        @apply text-center;
 
-        & a { 
+        & a {
             @apply no-underline mx-2 text-yellow;
-            
-            &:visited{
+
+            &:visited {
                 @apply no-underline mx-2 text-yellow;
             }
 

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 body {
-  @apply text-foreground bg-background font-spaceMono pt-24;
+  @apply text-foreground bg-background font-spaceMono pt-24 pb-12;
 }
 
 header {
@@ -227,10 +227,10 @@ hr {
 }
 
 footer {
-  @apply w-full mt-8;
+  @apply bg-black h-10 fixed bottom-0 left-0 right-0 z-50 border-yellow border-solid border-0 border-t-[1px] flex items-center justify-center;
 }
 footer .footer-content {
-  @apply container mx-auto px-4 py-6 center-content text-center;
+  @apply text-center;
 }
 footer .footer-content a {
   @apply no-underline mx-2 text-yellow;
