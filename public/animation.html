@@ -25,8 +25,8 @@
 
         const gap = 800;
         const topGap = viewportHeight / 4;
-        const fadeOutDistance = 300;
-        const fadeInDistance = 200;
+        const fadeOutDistance = 50;
+        const fadeInDistance = 400;
         const boxHeight = 200;
 
         const handleImageLoad = (e) => {
@@ -47,12 +47,24 @@
                 }
             };
 
+            const handleResize = () => {
+                setTimeout(() => {
+                    setViewportHeight(window.innerHeight);
+                    handleImageLoad({ target: document.querySelector('img[alt="Welcome"]') });
+                    handleTokenomicsLoad({ target: document.querySelector('img[alt="Tokenomics"]') });
+                }, 100);
+            };
+
             window.addEventListener('scroll', handleScroll);
+            window.addEventListener('resize', handleResize);
+
             return () => {
                 window.removeEventListener('scroll', handleScroll);
+                window.removeEventListener('resize', handleResize);
             };
         }, [collisionPoint1, collisionPoint2, topGap, imageHeight]);
 
+        // Rest of the code remains exactly the same...
         const isColliding1 = scrollY >= collisionPoint1 - topGap - imageHeight;
         const isColliding2 = scrollY >= collisionPoint2 - topGap - boxHeight;
 

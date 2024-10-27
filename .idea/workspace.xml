@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b34344d5-315e-483d-bf46-c989e7765510" name="Changes" comment="" />
+    <list default="true" id="b34344d5-315e-483d-bf46-c989e7765510" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animation.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/animation.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +28,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;JavaScript Debug.animation.html.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.CodyAccountHistoryMigration&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.CodyAccountsIdsRefresh&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.CodyAssignOrphanedChatsToActiveAccount&quot;: &quot;true&quot;,
@@ -59,7 +63,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23726.96" />
       </set>
     </attachedChunks>
   </component>
@@ -75,7 +79,9 @@
       <workItem from="1728230874790" duration="9764000" />
       <workItem from="1728327800164" duration="4639000" />
       <workItem from="1729895553583" duration="285000" />
-      <workItem from="1729895852090" duration="4430000" />
+      <workItem from="1729895852090" duration="4470000" />
+      <workItem from="1729928215022" duration="2957000" />
+      <workItem from="1729935810307" duration="808000" />
     </task>
     <servers />
   </component>
