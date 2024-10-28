@@ -17,6 +17,7 @@
         const [scrollY, setScrollY] = React.useState(0);
         const [imageHeight, setImageHeight] = React.useState(200);
         const [viewportHeight, setViewportHeight] = React.useState(window.innerHeight);
+        const [visionHeight, setVisionHeight] = React.useState(200);
         const [tokenomicsHeight, setTokenomicsHeight] = React.useState(200);
 
         const handleTokenomicsLoad = (e) => {
@@ -29,12 +30,16 @@
         const fadeInDistance = 400;
         const boxHeight = 200;
 
+        const handleVisionLoad = (e) => {
+            setVisionHeight(e.target.height);
+        };
+
         const handleImageLoad = (e) => {
             setImageHeight(e.target.height);
         };
 
         const collisionPoint1 = topGap + imageHeight + gap;
-        const collisionPoint2 = collisionPoint1 + tokenomicsHeight + gap;
+        const collisionPoint2 = collisionPoint1 + visionHeight + gap;
 
         React.useEffect(() => {
             const handleScroll = () => {
@@ -51,6 +56,7 @@
                 setTimeout(() => {
                     setViewportHeight(window.innerHeight);
                     handleImageLoad({ target: document.querySelector('img[alt="Welcome"]') });
+                    handleVisionLoad({ target: document.querySelector('img[alt="Vision"]') });
                     handleTokenomicsLoad({ target: document.querySelector('img[alt="Tokenomics"]') });
                 }, 100);
             };
@@ -67,6 +73,7 @@
         // Rest of the code remains exactly the same...
         const isColliding1 = scrollY >= collisionPoint1 - topGap - imageHeight;
         const isColliding2 = scrollY >= collisionPoint2 - topGap - boxHeight;
+        const isColliding3 = scrollY >= collisionPoint3 - topGap - boxHeight;
 
         const collisionProgress1 = Math.max(
             0,
@@ -116,7 +123,11 @@
             ? Math.max(0, 1 - (scrollY - (collisionPoint2 - topGap)) / fadeOutDistance)
             : Math.min(1, (scrollY - fadeInStartPoint1) / fadeInDistance);
 
-        const box3Opacity = Math.min(
+        const box3Opacity = isColliding3
+            ? Math.max(0, 1 - (scrollY - (collisionPoint2 - topGap)) / fadeOutDistance)
+            : Math.min(1, (scrollY - fadeInStartPoint1) / fadeInDistance);
+
+        const box4Opacity = Math.min(
             1,
             (scrollY - fadeInStartPoint2) / fadeInDistance
         );
@@ -159,10 +170,10 @@
                 >
                     <div className="flex flex-col items-center">
                         <img
-                            src="images/content/tokenomics-with-text.png"
-                            alt="Tokenomics"
+                            src="images/content/vision-with-text.png"
+                            alt="Vision"
                             className="w-full h-auto"
-                            onLoad={handleTokenomicsLoad}
+                            onLoad={handleVisionLoad}
                         />
                         <div
                             className="text-center text-xl mt-5"
@@ -176,24 +187,30 @@
                     </div>
                 </div>
                 <div
-                    className="fixed top-0 left-1/2 w-3/4 h-[200px] bg-green-500 flex items-center justify-center text-white text-2xl transform -translate-x-1/2"
+                    className="fixed top-0 left-1/2 w-3/4 flex flex-col items-center justify-center transform -translate-x-1/2"
                     style={{
                         transform: `translateX(-50%) translateY(${box3Position}px)`,
                         transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
                         opacity: box3Opacity,
                     }}
                 >
-                    Box 3.0
-                    <br />
-                    Box 3.1
-                    <br />
-                    Box 3.2
-                    <br />
-                    Box 3.3
-                    <br />
-                    Box 3.4
-                    <br />
-                    Box 3.5
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="images/content/vision-with-text.png"
+                            alt="Vision"
+                            className="w-full h-auto"
+                            onLoad={handleTokenomicsLoad}
+                        />
+                        <div
+                            className="text-center text-xl mt-5"
+                            style={{
+                                opacity: isColliding2 ? 0 : 1,
+                                transition: 'opacity 0.3s ease-out',
+                            }}
+                        >
+                            Additional text below Box 3
+                        </div>
+                    </div>
                 </div>
             </div>
         );
