@@ -48,7 +48,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/home/flyingmongoose/Projects/degenstudios/websites/V-Website/node_modules/typescript/lib",
+    "ts.external.directory.path": "D:\\projects\\DegenStudios\\Websites\\vare.money\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -68,6 +68,11 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\projects\DegenStudios\Websites\vare.money\public" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="vh" />
+    </option>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -98,6 +103,8 @@
       <workItem from="1730255023792" duration="660000" />
       <workItem from="1730255690970" duration="200000" />
       <workItem from="1730255899109" duration="7384000" />
+      <workItem from="1730290158796" duration="26000" />
+      <workItem from="1730290195999" duration="15962000" />
     </task>
     <servers />
   </component>
