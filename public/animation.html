@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scrolling Collision Effect</title>
+    <title>Scrolling Transition Effect</title>
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -15,49 +15,75 @@
 <script type="text/babel">
     function App() {
         const [scrollY, setScrollY] = React.useState(0);
-        const [imageHeight, setImageHeight] = React.useState(200);
+        const [welcomeHeight, setWelcomeHeight] = React.useState(200);
         const [viewportHeight, setViewportHeight] = React.useState(window.innerHeight);
         const [visionHeight, setVisionHeight] = React.useState(200);
         const [tokenomicsHeight, setTokenomicsHeight] = React.useState(200);
-
-        const handleTokenomicsLoad = (e) => {
-            setTokenomicsHeight(e.target.height);
-        };
+        const [socialsHeight, setSocialsHeight] = React.useState(200);
+        const [buyHeight, setBuyHeight] = React.useState(200); // New state for Buy
 
         const gap = 800;
         const topGap = viewportHeight / 4;
         const fadeOutDistance = 50;
         const fadeInDistance = 400;
-        const boxHeight = 200;
+
+        const handleWelcomeLoad = (e) => {
+            setWelcomeHeight(e.target.height);
+        };
 
         const handleVisionLoad = (e) => {
             setVisionHeight(e.target.height);
         };
 
-        const handleImageLoad = (e) => {
-            setImageHeight(e.target.height);
+        const handleTokenomicsLoad = (e) => {
+            setTokenomicsHeight(e.target.height);
         };
 
-        const collisionPoint1 = topGap + imageHeight + gap;
-        const collisionPoint2 = collisionPoint1 + visionHeight + gap;
+        const handleSocialsLoad = (e) => {
+            setSocialsHeight(e.target.height);
+        };
+
+        const handleBuyLoad = (e) => {
+            setBuyHeight(e.target.height);
+        };
+
+        const welcomeTransitionPoint = topGap + welcomeHeight + gap;
+        const visionTransitionPoint = welcomeTransitionPoint + visionHeight + gap;
+        const tokenomicsTransitionPoint = visionTransitionPoint + tokenomicsHeight + gap;
+        const socialsTransitionPoint = tokenomicsTransitionPoint + socialsHeight + gap;
+        const buyTransitionPoint = socialsTransitionPoint + gap;
 
         React.useEffect(() => {
             const handleScroll = () => {
-                setScrollY(window.scrollY);
-                if (window.scrollY >= collisionPoint1 - topGap - imageHeight) {
-                    console.log('Collision 1 started!');
+                const maxScroll = buyTransitionPoint - (topGap * 4);
+                const newScrollY = Math.min(window.scrollY, maxScroll);
+                setScrollY(newScrollY);
+
+                if (newScrollY >= welcomeTransitionPoint - topGap - welcomeHeight) {
+                    console.log('Welcome transition started!');
                 }
-                if (window.scrollY >= collisionPoint2 - topGap - boxHeight) {
-                    console.log('Collision 2 started!');
+                if (newScrollY >= visionTransitionPoint - topGap - visionHeight) {
+                    console.log('Vision transition started!');
+                }
+                if (newScrollY >= tokenomicsTransitionPoint - topGap - tokenomicsHeight) {
+                    console.log('Tokenomics transition started!');
+                }
+                if (newScrollY >= socialsTransitionPoint - topGap - socialsHeight) {
+                    console.log('Socials transition started!');
+                }
+                if (newScrollY >= buyTransitionPoint - topGap - buyHeight) {
+                    console.log('Buy transition started!');
                 }
             };
 
             const handleResize = () => {
                 setTimeout(() => {
                     setViewportHeight(window.innerHeight);
-                    handleImageLoad({ target: document.querySelector('img[alt="Welcome"]') });
+                    handleWelcomeLoad({ target: document.querySelector('img[alt="Welcome"]') });
                     handleVisionLoad({ target: document.querySelector('img[alt="Vision"]') });
                     handleTokenomicsLoad({ target: document.querySelector('img[alt="Tokenomics"]') });
+                    handleSocialsLoad({ target: document.querySelector('img[alt="Socials"]') });
+                    handleBuyLoad({ target: document.querySelector('img[alt="Buy"]') });
                 }, 100);
             };
 
@@ -68,78 +94,83 @@
                 window.removeEventListener('scroll', handleScroll);
                 window.removeEventListener('resize', handleResize);
             };
-        }, [collisionPoint1, collisionPoint2, topGap, imageHeight]);
+        }, [welcomeTransitionPoint, visionTransitionPoint, tokenomicsTransitionPoint, socialsTransitionPoint, buyTransitionPoint, topGap, welcomeHeight]);
 
-        // Rest of the code remains exactly the same...
-        const isColliding1 = scrollY >= collisionPoint1 - topGap - imageHeight;
-        const isColliding2 = scrollY >= collisionPoint2 - topGap - boxHeight;
-        const isColliding3 = scrollY >= collisionPoint3 - topGap - boxHeight;
+        const isWelcomeTransitioning = scrollY >= welcomeTransitionPoint - topGap - welcomeHeight;
+        const isVisionTransitioning = scrollY >= visionTransitionPoint - topGap - visionHeight;
+        const isTokenomicsTransitioning = scrollY >= tokenomicsTransitionPoint - topGap - tokenomicsHeight;
+        const isSocialsTransitioning = scrollY >= socialsTransitionPoint - topGap - socialsHeight;
+        const isBuyTransitioning = scrollY >= buyTransitionPoint - topGap - buyHeight;
 
-        const collisionProgress1 = Math.max(
-            0,
-            Math.min(
-                1,
-                (scrollY - (collisionPoint1 - topGap - imageHeight)) / imageHeight
-            )
-        );
-        const collisionProgress2 = Math.max(
-            0,
-            Math.min(
-                1,
-                (scrollY - (collisionPoint2 - topGap - boxHeight)) / boxHeight
-            )
-        );
+        const welcomeTransitionProgress = Math.max(0, Math.min(1, (scrollY - (welcomeTransitionPoint - topGap - welcomeHeight)) / welcomeHeight));
+        const visionTransitionProgress = Math.max(0, Math.min(1, (scrollY - (visionTransitionPoint - topGap - visionHeight)) / visionHeight));
+        const tokenomicsTransitionProgress = Math.max(0, Math.min(1, (scrollY - (tokenomicsTransitionPoint - topGap - tokenomicsHeight)) / tokenomicsHeight));
+        const socialsTransitionProgress = Math.max(0, Math.min(1, (scrollY - (socialsTransitionPoint - topGap - socialsHeight)) / socialsHeight));
+        const buyTransitionProgress = Math.max(0, Math.min(1, (scrollY - (buyTransitionPoint - topGap - buyHeight)) / buyHeight));
 
-        const box1Position =
-            scrollY < collisionPoint1 - topGap - imageHeight
-                ? Math.max(topGap, topGap - scrollY)
-                : collisionProgress1 < 1
-                    ? topGap - imageHeight * collisionProgress1
-                    : topGap - imageHeight - (scrollY - (collisionPoint1 - topGap));
+        const welcomePosition = scrollY < welcomeTransitionPoint - topGap - welcomeHeight
+            ? Math.max(topGap, topGap - scrollY)
+            : welcomeTransitionProgress < 1
+                ? topGap - welcomeHeight * welcomeTransitionProgress
+                : topGap - welcomeHeight - (scrollY - (welcomeTransitionPoint - topGap));
 
-        const box2Position =
-            scrollY < collisionPoint2 - topGap - boxHeight
-                ? Math.max(
-                    topGap,
-                    Math.min(collisionPoint1 - scrollY, topGap + boxHeight + gap)
-                )
-                : collisionProgress2 < 1
-                    ? topGap - boxHeight * collisionProgress2
-                    : topGap - boxHeight - (scrollY - (collisionPoint2 - topGap));
+        const visionPosition = scrollY < visionTransitionPoint - topGap - visionHeight
+            ? Math.max(topGap, Math.min(welcomeTransitionPoint - scrollY, topGap + visionHeight + gap))
+            : visionTransitionProgress < 1
+                ? topGap - visionHeight * visionTransitionProgress
+                : topGap - visionHeight - (scrollY - (visionTransitionPoint - topGap));
 
-        const box3Position = Math.max(
-            topGap,
-            Math.min(collisionPoint2 - scrollY, topGap + boxHeight + gap * 2)
-        );
+        const tokenomicsPosition = scrollY < tokenomicsTransitionPoint - topGap - tokenomicsHeight
+            ? Math.max(topGap, Math.min(visionTransitionPoint - scrollY, topGap + tokenomicsHeight + gap))
+            : tokenomicsTransitionProgress < 1
+                ? topGap - tokenomicsHeight * tokenomicsTransitionProgress
+                : topGap - tokenomicsHeight - (scrollY - (tokenomicsTransitionPoint - topGap));
 
-        const box1Opacity = isColliding1
-            ? Math.max(0, 1 - (scrollY - (collisionPoint1 - topGap)) / fadeOutDistance)
-            : 1;
+        const socialsPosition = scrollY < socialsTransitionPoint - topGap - socialsHeight
+            ? Math.max(topGap, Math.min(tokenomicsTransitionPoint - scrollY, topGap + socialsHeight + gap))
+            : socialsTransitionProgress < 1
+                ? topGap - socialsHeight * socialsTransitionProgress
+                : topGap - socialsHeight - (scrollY - (socialsTransitionPoint - topGap));
 
-        const fadeInStartPoint1 = collisionPoint1 - topGap - boxHeight - fadeInDistance - 100;
-        const fadeInStartPoint2 = collisionPoint2 - topGap - boxHeight - fadeInDistance - 100;
+        const buyPosition = scrollY < buyTransitionPoint - topGap - buyHeight
+            ? Math.max(topGap, Math.min(socialsTransitionPoint - scrollY, topGap + buyHeight + gap))
+            : buyTransitionProgress < 1
+                ? topGap - buyHeight * buyTransitionProgress
+                : topGap - buyHeight - (scrollY - (buyTransitionPoint - topGap));
 
-        const box2Opacity = isColliding2
-            ? Math.max(0, 1 - (scrollY - (collisionPoint2 - topGap)) / fadeOutDistance)
-            : Math.min(1, (scrollY - fadeInStartPoint1) / fadeInDistance);
+        const welcomeOpacity = Math.max(0, Math.min(1, isWelcomeTransitioning
+            ? 1 - (scrollY - (welcomeTransitionPoint - topGap)) / fadeOutDistance
+            : 1));
 
-        const box3Opacity = isColliding3
-            ? Math.max(0, 1 - (scrollY - (collisionPoint2 - topGap)) / fadeOutDistance)
-            : Math.min(1, (scrollY - fadeInStartPoint1) / fadeInDistance);
+        const fadeInStartPointVision = welcomeTransitionPoint - topGap - visionHeight - fadeInDistance - 100;
+        const fadeInStartPointTokenomics = visionTransitionPoint - topGap - tokenomicsHeight - fadeInDistance - 100;
+        const fadeInStartPointSocials = tokenomicsTransitionPoint - topGap - socialsHeight - fadeInDistance - 100;
+        const fadeInStartPointBuy = socialsTransitionPoint - topGap - buyHeight - fadeInDistance - 100;
 
-        const box4Opacity = Math.min(
-            1,
-            (scrollY - fadeInStartPoint2) / fadeInDistance
-        );
+        const visionOpacity = Math.max(0, Math.min(1, isVisionTransitioning
+            ? 1 - (scrollY - (visionTransitionPoint - topGap)) / fadeOutDistance
+            : (scrollY - fadeInStartPointVision) / fadeInDistance));
+
+        const tokenomicsOpacity = Math.max(0, Math.min(1, isTokenomicsTransitioning
+            ? 1 - (scrollY - (tokenomicsTransitionPoint - topGap)) / fadeOutDistance
+            : (scrollY - fadeInStartPointTokenomics) / fadeInDistance));
+
+        const socialsOpacity = Math.max(0, Math.min(1, isSocialsTransitioning
+            ? 1 - (scrollY - (socialsTransitionPoint - topGap)) / fadeOutDistance
+            : (scrollY - fadeInStartPointSocials) / fadeInDistance));
+
+        const buyOpacity = Math.max(0, Math.min(1, isBuyTransitioning
+            ? 1 - (scrollY - (buyTransitionPoint - topGap)) / fadeOutDistance
+            : (scrollY - fadeInStartPointBuy) / fadeInDistance));
 
         return (
-            <div className="h-[600vh] relative">
+            <div className="h-[1000vh] relative">
                 <div
                     className="fixed top-0 left-1/2 w-3/4 flex flex-col items-center justify-center transform -translate-x-1/2"
                     style={{
-                        transform: `translateX(-50%) translateY(${box1Position}px)`,
+                        transform: `translateX(-50%) translateY(${welcomePosition}px)`,
                         transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
-                        opacity: box1Opacity,
+                        opacity: welcomeOpacity,
                     }}
                 >
                     <div className="flex flex-col items-center">
@@ -147,25 +178,43 @@
                             src="images/content/welcome.png"
                             alt="Welcome"
                             className="w-full h-auto"
-                            onLoad={handleImageLoad}
+                            onLoad={handleWelcomeLoad}
                         />
                         <div
                             className="text-center text-xl mt-5"
                             style={{
-                                opacity: isColliding1 ? 0 : 1,
+                                opacity: isWelcomeTransitioning ? 0 : 1,
                                 transition: 'opacity 0.3s ease-out',
                             }}
                         >
-                            Additional text below Box 1
+                            Welcome Section Content
+                        </div>
+                        <div
+                            className="text-center text-xl mt-5"
+                            style={{
+                                opacity: isVisionTransitioning ? 0 : 1,
+                                transition: 'opacity 0.3s ease-out',
+                            }}
+                        >
+                            Vision Section Content
+                        </div>
+                        <div
+                            className="text-center text-xl mt-5"
+                            style={{
+                                opacity: isTokenomicsTransitioning ? 0 : 1,
+                                transition: 'opacity 0.3s ease-out',
+                            }}
+                        >
+                            Tokenomics Section Content
                         </div>
                     </div>
                 </div>
                 <div
                     className="fixed top-0 left-1/2 w-3/4 flex flex-col items-center justify-center transform -translate-x-1/2"
                     style={{
-                        transform: `translateX(-50%) translateY(${box2Position}px)`,
+                        transform: `translateX(-50%) translateY(${visionPosition}px)`,
                         transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
-                        opacity: box2Opacity,
+                        opacity: visionOpacity,
                     }}
                 >
                     <div className="flex flex-col items-center">
@@ -175,41 +224,57 @@
                             className="w-full h-auto"
                             onLoad={handleVisionLoad}
                         />
-                        <div
-                            className="text-center text-xl mt-5"
-                            style={{
-                                opacity: isColliding2 ? 0 : 1,
-                                transition: 'opacity 0.3s ease-out',
-                            }}
-                        >
-                            Additional text below Box 2
-                        </div>
                     </div>
                 </div>
                 <div
                     className="fixed top-0 left-1/2 w-3/4 flex flex-col items-center justify-center transform -translate-x-1/2"
                     style={{
-                        transform: `translateX(-50%) translateY(${box3Position}px)`,
+                        transform: `translateX(-50%) translateY(${tokenomicsPosition}px)`,
                         transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
-                        opacity: box3Opacity,
+                        opacity: tokenomicsOpacity,
                     }}
                 >
                     <div className="flex flex-col items-center">
                         <img
-                            src="images/content/vision-with-text.png"
-                            alt="Vision"
+                            src="images/content/tokenomics-with-text.png"
+                            alt="Tokenomics"
                             className="w-full h-auto"
                             onLoad={handleTokenomicsLoad}
                         />
-                        <div
-                            className="text-center text-xl mt-5"
-                            style={{
-                                opacity: isColliding2 ? 0 : 1,
-                                transition: 'opacity 0.3s ease-out',
-                            }}
-                        >
-                            Additional text below Box 3
-                        </div>
+                    </div>
+                </div>
+                <div
+                    className="fixed top-0 left-1/2 w-3/4 flex flex-col items-center justify-center transform -translate-x-1/2"
+                    style={{
+                        transform: `translateX(-50%) translateY(${socialsPosition}px)`,
+                        transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
+                        opacity: socialsOpacity,
+                    }}
+                >
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="images/content/socials-with-text.png"
+                            alt="Socials"
+                            className="w-full h-auto"
+                            onLoad={handleSocialsLoad}
+                        />
+                    </div>
+                </div>
+                <div
+                    className="fixed top-0 left-1/2 w-3/4 flex flex-col items-center justify-center transform -translate-x-1/2"
+                    style={{
+                        transform: `translateX(-50%) translateY(${buyPosition}px)`,
+                        transition: 'transform 0.1s ease-out, opacity 0.3s ease-out',
+                        opacity: buyOpacity,
+                    }}
+                >
+                    <div className="flex flex-col items-center">
+                        <img
+                            src="images/content/buy-with-text.png"
+                            alt="Buy"
+                            className="w-full h-auto"
+                            onLoad={handleBuyLoad}
+                        />
                     </div>
                 </div>
             </div>
