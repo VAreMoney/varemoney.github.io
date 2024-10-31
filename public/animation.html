@@ -366,7 +366,8 @@
                                     className="text-center text-xl mt-5"
                                     style={{
                                         visibility: (!isWelcomeTransitioning && !isVisionTransitioning) ? 'visible' : 'collapse',
-                                        transition: 'visibility 0s linear 0.05s',
+                                        display: (!isWelcomeTransitioning && !isVisionTransitioning) ? 'block' : 'none',
+                                        transition: 'visibility 0s linear 0.05s, display 0s linear 0.05s',
                                     }}
                                 >
                                     Welcome Section Content
@@ -375,7 +376,8 @@
                                     className="text-center text-xl mt-5"
                                     style={{
                                         visibility: isWelcomeTransitioning && !isVisionTransitioning ? 'visible' : 'collapse',
-                                        transition: 'visibility 0s linear 0.05s',
+                                        display: isWelcomeTransitioning && !isVisionTransitioning ? 'block' : 'none',
+                                        transition: 'visibility 0s linear 0.05s, display 0s linear 0.05s',
                                     }}
                                 >
                                     Vision Section Content
@@ -384,7 +386,8 @@
                                     className="text-center text-xl mt-5"
                                     style={{
                                         visibility: isVisionTransitioning && !isTokenomicsTransitioning ? 'visible' : 'collapse',
-                                        transition: 'visibility 0s linear 0.05s',
+                                        display: isVisionTransitioning && !isTokenomicsTransitioning ? 'block' : 'none',
+                                        transition: 'visibility 0s linear 0.05s, display 0s linear 0.05s',
                                     }}
                                 >
                                     Tokenomics Section Content
@@ -393,7 +396,8 @@
                                     className="text-center text-xl mt-5"
                                     style={{
                                         visibility: isTokenomicsTransitioning && !isSocialsTransitioning ? 'visible' : 'collapse',
-                                        transition: 'visibility 0s linear 0.05s',
+                                        display: isTokenomicsTransitioning && !isSocialsTransitioning ? 'display' : 'none',
+                                        transition: 'visibility 0s linear 0.05s, display 0s linear 0.05s',
                                     }}
                                 >
                                     Socials Section Content
@@ -402,7 +406,8 @@
                                     className="text-center text-xl mt-5"
                                     style={{
                                         visibility: isSocialsTransitioning && !isBuyTransitioning ? 'visible' : 'collapse',
-                                        transition: 'visibility 0s linear 0.05s',
+                                        display: isSocialsTransitioning && !isBuyTransitioning ? 'block' : 'none',
+                                        transition: 'visibility 0s linear 0.05s, display 0s linear 0.05s',
                                     }}
                                 >
                                     Buy Section Content
