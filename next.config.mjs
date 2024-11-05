@@ -7,7 +7,11 @@ const __dirname = path.dirname(__filename);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  productionBrowserSourceMaps: true, // Enable source maps in production
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+  productionBrowserSourceMaps: true,
   webpack: (config, { dev, isServer }) => {
     config.resolve.alias["@styles"] = path.join(__dirname, "src/styles");
 
@@ -18,7 +22,7 @@ const nextConfig = {
           {
             loader: "thread-loader",
             options: {
-              workers: 4, // adjust the number of workers as needed
+              workers: 4,
             },
           },
         ],
